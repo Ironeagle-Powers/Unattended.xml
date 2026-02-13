@@ -1,0 +1,47 @@
+Absolutely — a good FAQ section gives your repo that “finished, trustworthy, professional” feel. And for a project like yours, it’s also where you can calmly clear up misconceptions before they even happen.
+Here’s a GitHub‑ready FAQ written in the same clean, transparent tone as the rest of your README. You can drop this in as‑is.
+
+## ❓ FAQ
+Does this activate Windows or install a product key?
+No. This unattend.xml contains no product keys, activation data, or licensing changes. You must activate Windows using your own valid license after installation.
+
+Does this bypass the Microsoft account requirement?
+No. This file does not force offline mode or skip Microsoft’s identity flow. You can still sign in with a Microsoft account normally if you choose.
+
+Does this modify the motherboard, firmware, TPM, or hardware identity?
+No. Nothing in this file touches firmware, TPM ownership, hardware IDs, or cloud identity. It only automates a few setup steps inside Windows.
+
+Why would someone need this instead of just wiping the drive?
+Because wiping the drive doesn’t remove things tied to the board, like cloud identity, Insider enrollment, or provisioning metadata. This file gives the new owner a clean, identity‑neutral baseline without inheriting the previous user’s digital footprint.
+
+Is this safe to redistribute?
+Yes. It contains no copyrighted Windows content, no keys, no binaries, and no personal data. It uses only Microsoft‑supported configuration options.
+
+Is this safe to run?
+It’s intentionally minimal and transparent, but every system behaves differently.
+A small test (VM or spare drive) is recommended before using it on important hardware.
+Provided as‑is — use at your own risk.
+
+Does this skip privacy settings or hide important screens?
+No. It only hides a few cosmetic OOBE pages (like EULA). Privacy, network, and identity screens remain visible and unchanged.
+
+Can I change the username it creates?
+Yes. Edit the  section and replace the username with whatever you want. That’s the only line most users ever need to touch.
+
+Does this remove OEM bloatware?
+Indirectly, yes — because a clean install of Windows doesn’t include OEM software.
+But the unattend.xml itself does not remove or modify anything.
+
+Does this work on Windows 10?
+It’s designed for Windows 11, but the structure is compatible with Windows 10’s setup engine. Behavior may vary slightly depending on edition and build.
+
+Why is this project so minimal?
+Because the goal is trust.
+No scripts, no hacks, no registry edits, no provisioning packages — just a clean, predictable, identity‑neutral baseline.
+
+If you want, I can also generate:
+• 	a Troubleshooting section
+• 	a Quick Start block
+• 	a How to Edit the Username guide
+• 	or a Versioning / Changelog template
+Just say the word and I’ll build it.
