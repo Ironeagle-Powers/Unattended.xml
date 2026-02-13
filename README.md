@@ -103,3 +103,27 @@ Simple as that.
 
 ## ⭐ In One Sentence
 A minimal, transparent Windows 11 unattend.xml that creates a clean local admin account and resets the user experience without touching licensing, activation, or identity.
+
+1️⃣ In the One‑Line Summary
+
+“Minimal Windows 11 unattended setup file that auto-creates a local Administrator account (RID 1000) and skips OOBE screens without altering activation or system integrity.”
+
+2️⃣ In the Features Section
+
+Add a bullet emphasizing the user creation:
+
+Features:
+
+Auto-create local admin account (RID 1000)
+
+Skip EULA and unnecessary OOBE screens
+
+Set default locale/keyboard
+
+No hardware bypasses or licensing hacks
+
+3️⃣ Optional Explanation / Why RID 1000 Matters
+
+You could include a small note under features:
+
+“Creating the first local account at RID 1000 ensures consistency across deployments and avoids issues with system identity checks or service permissions.”
