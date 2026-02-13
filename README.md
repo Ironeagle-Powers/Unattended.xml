@@ -1,8 +1,6 @@
 
 
-# 🟦 Clean Windows 11 Unattend.xml
-A transparent, minimal, identity‑neutral setup file for clean installs
-Small test recommended — use at your own risk.
+Automated Windows 11 deployment XML — quick setup, local account, language, predictable clean install
 
 ## ⭐ Overview
 This repository provides a minimal, fully transparent Windows 11 unattend.xml designed to create a clean local administrator account and apply basic setup defaults without modifying licensing, activation, identity, or cloud behavior.
