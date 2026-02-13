@@ -1,39 +1,106 @@
-## ❓ FAQ
-Does this activate Windows or install a product key?
-No. This unattend.xml contains no product keys, activation data, or licensing changes. You must activate Windows using your own valid license after installation.
+# FAQ — Ironeagle-Powers/Unattended.xml
 
-Does this bypass the Microsoft account requirement?
-No. This file does not force offline mode or skip Microsoft’s identity flow. You can still sign in with a Microsoft account normally if you choose.
+## General Questions
 
-Does this modify the motherboard, firmware, TPM, or hardware identity?
-No. Nothing in this file touches firmware, TPM ownership, hardware IDs, or cloud identity. It only automates a few setup steps inside Windows.
+**Q: What is this project for?**  
+A: This repository provides a minimal, standards-compliant Windows autounattend.xml for Windows 10/11 installations. It automates only essential configuration while remaining identity-neutral and compliant.
 
-Why would someone need this instead of just wiping the drive?
-Because wiping the drive doesn’t remove things tied to the board, like cloud identity, Insider enrollment, or provisioning metadata. This file gives the new owner a clean, identity‑neutral baseline without inheriting the previous user’s digital footprint.
+---
 
-Is this safe to redistribute?
-Yes. It contains no copyrighted Windows content, no keys, no binaries, and no personal data. It uses only Microsoft‑supported configuration options.
+**Q: Do I need to be offline for this to work?**  
+A: No — the answer file is designed to be online-safe. However, on some Windows 11 builds and editions (especially Home), Microsoft may still enforce Microsoft Account (MSA) sign-in if the device is online. This behavior is determined by the OS and not controlled by the answer file.
 
-Is this safe to run?
-It’s intentionally minimal and transparent, but every system behaves differently.
-A small test (VM or spare drive) is recommended before using it on important hardware.
-Provided as‑is — use at your own risk.
+---
 
-Does this skip privacy settings or hide important screens?
-No. It only hides a few cosmetic OOBE pages (like EULA). Privacy, network, and identity screens remain visible and unchanged.
+## Technical Questions
 
-Can I change the username it creates?
-Yes. Edit the  section and replace the username with whatever you want. That’s the only line most users ever need to touch.
+**Q: Will this prevent Microsoft Account prompts every time?**  
+A: Where Windows allows a local account path, this file avoids unnecessary MSA enforcement. On certain builds/editions, Windows may still insist on MSA if the device is online; this is a limitation of the OS.
 
-Does this remove OEM bloatware?
-Indirectly, yes — because a clean install of Windows doesn’t include OEM software.
-But the unattend.xml itself does not remove or modify anything.
+---
 
-Does this work on Windows 10?
-It’s designed for Windows 11, but the structure is compatible with Windows 10’s setup engine. Behavior may vary slightly depending on edition and build.
+**Q: Does this file pre-seed any user accounts?**  
+A: No. For identity neutrality and compliance, it does not include usernames, passwords, or pre-seeded accounts. Local account creation is left to the user or deployment tools post-install.
 
-Why is this project so minimal?
-Because the goal is trust.
-No scripts, no hacks, no registry edits, no provisioning packages — just a clean, predictable, identity‑neutral baseline.
+---
 
+**Q: Why not automate local account creation here?**  
+A: Pre-seeding credentials in answer files can create security and compliance risks. This project intentionally avoids embedding passwords or user identity to remain transparent and auditable.
 
+---
+
+**Q: Will this skip all OOBE pages?**  
+A: It skips non-essential screens (EULA, OEM registration, etc.). Windows may still surface account/credential screens depending on edition and build.
+
+---
+
+## Deployment and Usage
+
+**Q: How do I use this file?**  
+A:  
+1. Save this file as `Autounattend.xml`.  
+2. Place it at the root of your Windows 10/11 install USB.  
+3. Boot the target machine from the USB to begin setup.
+
+---
+
+**Q: Can I use this with WinPE or custom media?**  
+A: Yes. It’s compatible with WinPE environments and typical deployment pipelines, including VHD/VHDX boot scenarios.
+
+---
+
+**Q: Is this compatible with MDT/SCCM/Intune?**  
+A: Yes — it can be consumed by standard deployment tools that support answer files.
+
+---
+
+## Compliance and Support
+
+**Q: Is this supported by Microsoft?**  
+A: The answer file uses only Microsoft-documented settings. However, Microsoft’s official support may vary based on edition, OS build, and online behavior. Unsupported bypasses or registry hacks are not used in this project.
+
+---
+
+**Q: Why doesn’t this use registry keys like LabConfig or BypassNRO?**  
+A: Those are unsupported workarounds that can leave the system in a non-compliant state. This project avoids them intentionally.
+
+---
+
+**Q: Are there security risks with answer files?**  
+A: Yes — embedding passwords in answer files is risky because these files can remain on the device after setup. This file avoids password injection for that reason.
+
+---
+
+## Comparisons and Alternatives
+
+**Q: How is this different from UnattendedWinstall or Clean-Windows?**  
+A: Projects like UnattendedWinstall and Clean-Windows include extensive customizations, PowerShell scripts, registry tweaks, and pre-seeded local accounts. Those tools are powerful, but not minimal, not identity-neutral, and use unsupported methods.
+
+---
+
+**Q: What about answer file generators?**  
+A: Generators like schneegans/rbardtke and others can produce minimal, compliant answer files if configured carefully — but they require user choices. This project provides a **pre-built, ready-to-use** file with minimal configuration.
+
+---
+
+## Limitations and Edge Cases
+
+**Q: Does this work on all Windows editions?**  
+A: It works where Microsoft’s documented answer file settings are honored. Some Home builds aggressively enforce online account paths, and that behavior may change over time.
+
+---
+
+**Q: Will this continue to work in future updates?**  
+A: Microsoft’s OOBE behavior evolves. Users are encouraged to test with new builds as they are released and update configurations accordingly.
+
+---
+
+## Misc
+
+**Q: Why is this project minimal?**  
+A: Minimalism improves predictability, reduces side effects, and enhances compliance. It avoids customizations that aren’t part of Microsoft’s documented unattended setup framework.
+
+---
+
+**Q: Can I customize this answer file further?**  
+A: Yes — but any additions (local accounts, registry settings, scripts) may change the compliance profile and behavior. Use caution and validate against your deployment requirements.
