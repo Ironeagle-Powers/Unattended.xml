@@ -39,9 +39,3 @@ Why is this project so minimal?
 Because the goal is trust.
 No scripts, no hacks, no registry edits, no provisioning packages — just a clean, predictable, identity‑neutral baseline.
 
-If you want, I can also generate:
-• 	a Troubleshooting section
-• 	a Quick Start block
-• 	a How to Edit the Username guide
-• 	or a Versioning / Changelog template
-Just say the word and I’ll build it.
