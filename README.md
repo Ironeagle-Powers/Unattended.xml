@@ -1,75 +1,98 @@
-Unattended.xml — Minimal Windows 11 Automated Deployment
+# Unattended.xml  
+A clean, safe, and transparent Windows setup automation file.
 
-A minimal, deterministic unattended configuration for Windows 11.
+This project provides a minimal `unattend.xml` that automates the out‑of‑box experience (OOBE) on a **fresh, legitimate Windows installation**.  
+It does **not** bypass licensing, activation, identity, or security. It simply removes repetitive setup steps so you can get to a usable desktop faster.
 
-This answer file automates only the essential setup phases required for a clean, reproducible installation. It avoids registry hacks, activation bypasses, hardware requirement modifications, or undocumented behavior.
+---
 
-Designed for deployment engineers, IT technicians, and power users who want a predictable baseline installation without altering Windows’ default compliance model.
+## ⭐ What This File Does
+- Skips the interactive OOBE screens  
+- Creates a **local administrator account** you can rename or edit  
+- Applies a few basic, non‑controversial defaults  
+- Lets you finish setup without internet  
+- Keeps everything transparent and editable
 
-Features
+Nothing is hidden. Nothing is obfuscated. Everything is inside one XML file you can read yourself.
 
-Creates the first persistent local Administrator account (RID 1000)
+---
 
-Sets system locale, input method, and UI language (en-US)
+## ⭐ What This File Does *Not* Do
+- It does **not** activate Windows  
+- It does **not** bypass Microsoft account requirements in unsupported ways  
+- It does **not** modify licensing, security, BitLocker, or identity  
+- It does **not** install software, drivers, or scripts  
+- It does **not** touch anything outside the normal Windows setup process
 
-Skips non-essential OOBE screens (EULA, OEM registration, online account prompts)
+This is a **safe, compliant, beginner‑friendly** automation file — not a hack, not a workaround, not a tool for modifying system internals.
 
-Assigns a unique machine identity during deployment
+---
 
-Compatible with WinPE, VHD/VHDX boot, and bare-metal installation
+## 📁 How to Use It
+1. Download `unattend.xml` from this repository  
+2. Place it in:  
+   `USB:\sources\unattend.xml`  
+3. Boot from your Windows installation media  
+4. Install Windows normally — the file handles the setup screens  
+5. Log in with the local account defined in the file
 
-Preserves activation, licensing, servicing stack integrity, and system binaries
+You can edit the username, password, or settings using any text editor.
 
-Why RID 1000
+---
 
-Ensures the first real local account receives RID 1000, preventing SID shifts caused by temporary setup or provisioning accounts.
+## 🛠 Editing the File
+You can safely change:
+- Username  
+- Password  
+- Computer name  
+- Region / language  
+- Time zone  
 
-This maintains predictable user namespace alignment across deployments.
+See the **Wiki** for detailed explanations of every section:
+https://github.com/Ironeagle-Powers/Unattended.xml/wiki
 
-Scope & Limitations
+---
 
-This configuration:
+## ❓ FAQ
+**Does this activate Windows?**  
+No — you still need a valid license.
 
-Does not bypass TPM, Secure Boot, or CPU requirement checks
+**Is this safe?**  
+Yes. It uses only documented Windows setup components. No scripts, no binaries, no modifications.
 
-Does not alter activation, licensing, or product keys
+**Can I customize it?**  
+Absolutely. The file is intentionally minimal so you can build on it.
 
-Does not execute scripts or modify the registry outside documented unattended schema
+---
 
-Stores no passwords, keys, or sensitive data
+## 🧭 Philosophy
+This project exists for one reason:  
+**to give people a clean, honest, transparent starting point for Windows automation.**
 
-It strictly follows Microsoft’s documented unattended deployment structure.
+Most unattended files online are:
+- bloated  
+- outdated  
+- unsafe  
+- or full of questionable tweaks  
 
-Deployment
+This one is intentionally simple.  
+You can run it as‑is or use it as a foundation for your own deployments.
 
-Save the file as Autounattend.xml
+---
 
-Place it in the root of a Windows 11 installation USB
+## 📚 Documentation
+The full documentation lives in the Wiki:  
+- How It Works  
+- What Each Section Does  
+- Troubleshooting  
+- Philosophy  
+- Use Cases  
+- Advanced Notes  
 
-Boot the target machine from the USB
+https://github.com/Ironeagle-Powers/Unattended.xml/wiki
 
-Windows Setup processes the file during:
+---
 
-specialize — system identity initialization and hardware preparation
-
-oobeSystem — user creation and final provisioning
-
-No additional tooling is required.
-
-Optional: Compatible with VHD/VHDX-based deployment and recovery workflows.
-
-Compatibility
-
-Windows 11 installation media (21H2 or newer)
-
-WinPE environments
-
-Bare-metal or virtualized deployments
-
-Offline or fully online installation workflows
-
-Online Installation Behavior
-
-This configuration is safe to use while connected to the internet.
-
-Because it does not provision Microsoft accounts or alter identity workflows, Windows remains in a standard retail configuration. Windows Update and activation operate normally.
+## ✔ License
+MIT License — do whatever you want with it.  
+Just be responsible and test before deploying.
