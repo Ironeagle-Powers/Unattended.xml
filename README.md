@@ -1,132 +1,66 @@
+# Unattended.xml — Minimal Windows 11 Automated Setup
 
+A clean, minimal unattended setup file for Windows 11 that automates only the essential setup tasks while leaving licensing, identity, and system integrity untouched.
 
-Automated Windows 11 deployment XML — quick setup, local account, language, predictable clean install
+---
 
-## ⭐ Overview
-This repository provides a minimal, fully transparent Windows 11 unattend.xml designed to create a clean local administrator account and apply basic setup defaults without modifying licensing, activation, identity, or cloud behavior.
-It exists for one purpose:
-To give someone a clean, safe, identity‑neutral Windows experience — especially when wiping the hard drive isn’t enough.
-If you inherited a computer from a family member, or you’re dealing with a machine that still “remembers” a previous owner’s Microsoft account, cloud identity, or Insider enrollment, this file helps you start fresh without hacks, bypasses, or tricks.
+## ⭐ Features
 
-1️⃣ In the One‑Line Summary
+This answer file:
 
-“Minimal Windows 11 unattended setup file that auto-creates a local Administrator account (RID 1000) and skips OOBE screens without altering activation or system integrity.”
+- Auto‑creates a **local Administrator account** (first real user with **RID 1000**)  
+- Applies default **locale and keyboard settings** (en‑US)  
+- Sets a **random computer name**  
+- Skips non‑essential OOBE screens (EULA, registration, OEM screens)  
+- Works with standard Windows install media without hacks or scripts  
 
-2️⃣ In the Features Section
+> **Why RID 1000 matters:**  
+> Creating the first real user at RID 1000 ensures Windows finalizes properly and behaves as a stable system without leftover provisioning or identity baggage.
 
-Add a bullet emphasizing the user creation:
+---
 
-Features:
+## ❌ What This File Does NOT Do
 
-Auto-create local admin account (RID 1000)
+- Bypass TPM, Secure Boot, or CPU compatibility checks  
+- Modify activation, licensing, or product keys  
+- Add scripts, registry hacks, or hidden tweaks  
+- Carry sensitive information (passwords, keys, tokens)  
 
-Skip EULA and unnecessary OOBE screens
+It uses **only documented Microsoft settings** for unattended setup.
 
-Set default locale/keyboard
+---
 
-No hardware bypasses or licensing hacks
+## 🛠 Usage
 
-3️⃣ Optional Explanation / Why RID 1000 Matters
+1. Save this file as `Autounattend.xml`  
+2. Place it in the root of a Windows 11 install USB  
+3. Boot the target machine from the USB  
+4. Windows Setup will automatically apply this file during install  
 
-You could include a small note under features:
+*Optional:* Works with WinPE environments and VHD/VHDX based recovery or portable installations.
 
-“Creating the first local account at RID 1000 ensures consistency across deployments and avoids issues with system identity checks or service permissions.”
+---
 
+## 📦 Compatibility
 
-## ⭐ What This File Does
-✔ Creates a single local administrator account
-You edit one line (the username).
-Windows creates that account during OOBE.
-No passwords, no auto‑login, no hidden accounts.
-✔ Sets basic language and locale defaults (en‑US)
-A predictable, universal baseline.
-✔ Assigns a random computer name
-No branding, no reused names, no identity leakage.
-✔ Hides a few cosmetic OOBE screens
-EULA, OEM fluff, and similar non‑essential pages.
-✔ Leaves Microsoft’s identity flow untouched
-It does not:
-• 	bypass Microsoft account
-• 	force offline mode
-• 	skip privacy screens
-• 	alter cloud provisioning
-• 	change activation or licensing
-Everything else behaves exactly as Windows intended.
+- Clean Windows 11 install media (21H2 and newer)  
+- WinPE environments for scripted install  
+- Deployment tools that support unattended files  
+- No online connectivity required  
 
-## ⭐ How It Works
-Windows Setup reads unattend.xml during two phases:
-1. Specialize Phase
-• 	Computer name
-• 	System defaults
-• 	Regional settings
-2. OOBE Phase
-• 	Local account creation
-• 	Language/keyboard setup
-• 	Cosmetic screen suppression
-There are:
-• 	no scripts
-• 	no registry edits
-• 	no hacks
-• 	no provisioning packages
-• 	no modifications to Windows
-This file uses only Microsoft‑supported configuration options documented in Windows Deployment.
+---
 
-## ⭐ Why This Exists
-Because sometimes you can erase the hard drive, but you can’t erase the board.
-When a computer is inherited — especially after a parent passes away — the motherboard may still be tied to:
-• 	the previous owner’s Microsoft account
-• 	cloud identity
-• 	Insider enrollment
-• 	provisioning flags
-• 	OEM metadata
-• 	hardware‑based entitlements
-These do not live on the disk.
-They live in firmware, NVRAM, TPM, and cloud metadata.
-So even after a clean install, Windows may still try to be their computer.
-This unattend.xml gives the new owner:
-• 	a clean local account
-• 	a clean OOBE
-• 	no inherited identity
-• 	no cloud baggage
-• 	no leftover provisioning
-• 	no surprises
-It’s not a hack.
-It’s not a bypass.
-It’s not a trick.
-It’s a reset of the relationship between Windows and the board, giving the user a clean, identity‑neutral baseline.
+## 🧾 Background
 
-## ⭐ Licensing & Safety Transparency
-This file is safe to redistribute because it contains:
-• 	no product keys
-• 	no activation data
-• 	no Windows binaries
-• 	no copyrighted content
-• 	no identity information
-It does not modify:
-• 	licensing
-• 	activation
-• 	TPM
-• 	firmware
-• 	cloud identity
-• 	hardware IDs
-It simply automates a few setup steps.
-Small test recommended — use at your own risk.
-Try it in a VM or on a spare drive before using it on important hardware.
+Windows Setup reads unattend files in two primary phases:
 
-## ⭐ Who This Helps
-This project is especially useful for:
-• 	people inheriting a computer from a family member
-• 	machines stuck in old Microsoft account bindings
-• 	devices previously enrolled in Insider builds
-• 	systems with cloud provisioning leftovers
-• 	anyone wanting a clean, identity‑neutral baseline
-• 	technicians doing clean installs for clients
-• 	users with only one PC and no extra hardware
-If you want Windows to install with a clean local admin account and no inherited identity, run it.
-If you prefer to click through OOBE manually, don’t.
-Simple as that.
+- **specialize** — system identity and configuration  
+- **oobeSystem** — user creation and OOBE screens  
 
-## ⭐ In One Sentence
-A minimal, transparent Windows 11 unattend.xml that creates a clean local admin account and resets the user experience without touching licensing, activation, or identity.
+This file only sets the required fields and leaves all other Windows behavior untouched.
 
+---
 
+## 📌 Short Description (for repo search)
+
+> Minimal Windows 11 unattended setup — auto local admin (RID 1000), default locale, skip OOBE, safe and clean.
