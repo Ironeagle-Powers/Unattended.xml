@@ -1,6 +1,11 @@
 # Unattended.xml  
 A clean, safe, and transparent Windows setup automation file.
 
+---
+**Compatibility**  
+This template has been tested and works with both **Windows 10** and **Windows 11** installations.
+---
+
 This project provides a minimal `unattend.xml` that automates the out‑of‑box experience (OOBE) on a **fresh, legitimate Windows installation**.  
 It does **not** bypass licensing, activation, identity, or security. It simply removes repetitive setup steps so you can get to a usable desktop faster.
 
