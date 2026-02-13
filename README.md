@@ -65,3 +65,8 @@ This file only populates fields essential for a **predictable, compliant install
 ## 📌 Search-Friendly Keywords
 
 > Windows 11 unattended deployment, automated provisioning, RID 1000, SID alignment, OOBE skip, VHD/VHDX boot, WinPE integration, deterministic image, IT deployment, system integrity
+
+### Works Fully Online
+This answer file is designed to be safe while connected to the internet during installation.  
+Because it bypasses OOBE without creating accounts or modifying identity, Windows never enters the cloud‑identity pipeline.  
+You can stay online the entire time — Windows Update will run normally, and the install will remain clean, neutral, and retail‑aligned.
