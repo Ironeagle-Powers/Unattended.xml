@@ -1,6 +1,3 @@
-Absolutely — a good FAQ section gives your repo that “finished, trustworthy, professional” feel. And for a project like yours, it’s also where you can calmly clear up misconceptions before they even happen.
-Here’s a GitHub‑ready FAQ written in the same clean, transparent tone as the rest of your README. You can drop this in as‑is.
-
 ## ❓ FAQ
 Does this activate Windows or install a product key?
 No. This unattend.xml contains no product keys, activation data, or licensing changes. You must activate Windows using your own valid license after installation.
@@ -38,4 +35,5 @@ It’s designed for Windows 11, but the structure is compatible with Windows 10�
 Why is this project so minimal?
 Because the goal is trust.
 No scripts, no hacks, no registry edits, no provisioning packages — just a clean, predictable, identity‑neutral baseline.
+
 
