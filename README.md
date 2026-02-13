@@ -1,66 +1,67 @@
-# Unattended.xml — Minimal Windows 11 Automated Setup
+# Unattended.xml — Minimal Windows 11 Automated Deployment
 
-A clean, minimal unattended setup file for Windows 11 that automates only the essential setup tasks while leaving licensing, identity, and system integrity untouched.
+A **deterministic, minimal unattended setup** for Windows 11 that orchestrates essential configuration while preserving **system integrity, provisioning fidelity, and identity hygiene**.  
+
+This is intended for deployment engineers, IT technicians, or power users who require a **reproducible golden image setup** without injecting external dependencies or breaking baseline compliance.
 
 ---
 
 ## ⭐ Features
 
-This answer file:
-
-- Auto‑creates a **local Administrator account** (first real user with **RID 1000**)  
-- Applies default **locale and keyboard settings** (en‑US)  
-- Sets a **random computer name**  
-- Skips non‑essential OOBE screens (EULA, registration, OEM screens)  
-- Works with standard Windows install media without hacks or scripts  
+- Auto‑creates a **local Administrator account (RID 1000)** to ensure proper **SID alignment** and **security context initialization**  
+- Configures default **locale, input method, and system locale** (en-US)  
+- Assigns a **randomized machine identity** for post-deployment uniqueness  
+- Skips non‑essential OOBE screens (EULA, OEM registration, online accounts)  
+- Compatible with **WinPE** environments, VHD/VHDX boot, and **bare-metal provisioning**  
+- Maintains **non-destructive deployment**: licensing, activation, and system binaries remain untouched  
 
 > **Why RID 1000 matters:**  
-> Creating the first real user at RID 1000 ensures Windows finalizes properly and behaves as a stable system without leftover provisioning or identity baggage.
+> Creating the first user at RID 1000 ensures **baseline user namespace alignment** and prevents Windows from inheriting **residual provisioning artifacts** from temporary or pre-deployment accounts.
 
 ---
 
-## ❌ What This File Does NOT Do
+## ❌ Limitations / Scope
 
-- Bypass TPM, Secure Boot, or CPU compatibility checks  
-- Modify activation, licensing, or product keys  
-- Add scripts, registry hacks, or hidden tweaks  
-- Carry sensitive information (passwords, keys, tokens)  
+- Does not bypass TPM, Secure Boot, or CPU attestation checks  
+- Does not alter **activation, licensing, or product keys**  
+- Does not run scripts, registry hacks, or undocumented tweaks  
+- No sensitive data is stored (passwords, keys, tokens)  
 
-It uses **only documented Microsoft settings** for unattended setup.
+This file adheres strictly to **Microsoft documented unattended deployment schemas**.
 
 ---
 
-## 🛠 Usage
+## 🛠 Deployment / Usage
 
 1. Save this file as `Autounattend.xml`  
 2. Place it in the root of a Windows 11 install USB  
-3. Boot the target machine from the USB  
-4. Windows Setup will automatically apply this file during install  
+3. Boot target hardware from USB  
+4. Windows Setup consumes this file during the **specialize** and **oobeSystem** passes, executing deterministic configuration automation  
 
-*Optional:* Works with WinPE environments and VHD/VHDX based recovery or portable installations.
+*Optional:* Works in VHD/VHDX recovery scenarios or **disconnected deployment chains**.
 
 ---
 
 ## 📦 Compatibility
 
-- Clean Windows 11 install media (21H2 and newer)  
-- WinPE environments for scripted install  
-- Deployment tools that support unattended files  
-- No online connectivity required  
+- Clean Windows 11 installation media (21H2 and newer)  
+- WinPE environments for scripted or headless installation  
+- Supports **dynamic provisioning, hardware abstraction**, and bare-metal deployment  
+- Offline or online deployment workflows  
 
 ---
 
-## 🧾 Background
+## 🧾 Technical Background
 
-Windows Setup reads unattend files in two primary phases:
+Windows Setup processes unattended files in **phased configuration passes**:
 
-- **specialize** — system identity and configuration  
-- **oobeSystem** — user creation and OOBE screens  
+- **specialize** — initializes system identity, applies locale, and prepares hardware profile  
+- **oobeSystem** — creates the first local user, applies OOBE settings, and finalizes provisioning  
 
-This file only sets the required fields and leaves all other Windows behavior untouched.
+This file only populates fields essential for a **predictable, compliant installation**, leaving all other behavior in its **pristine default state**.
 
 ---
 
-## 📌 Short Description (for repo search)
+## 📌 Search-Friendly Keywords
 
-> Minimal Windows 11 unattended setup — auto local admin (RID 1000), default locale, skip OOBE, safe and clean.
+> Windows 11 unattended deployment, automated provisioning, RID 1000, SID alignment, OOBE skip, VHD/VHDX boot, WinPE integration, deterministic image, IT deployment, system integrity
